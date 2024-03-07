@@ -1,1 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+function getComputerChoice(){
+    let result = Math.floor(Math.random() * 3 ) + 1;
+    switch (result) {
+        case 1:
+        result = "Rock";
+            break;
+        case 2:
+        result = "Paper"
+            break;  
+        default:
+        result = "Scissors";
+            break;
+    }
+    return result;
+    
+}
+function getPlayerChoice() {
+    let answer = prompt("Rock Paper or Scissors? Which one do you choose?")
+    switch (answer) {
+        case ("Rock"):
+        answer = "Rock";
+            break;
+        case ("Paper"):
+        answer = "Paper";
+            break;  
+        case ("Scissors"):
+        answer = "Scissors";
+            break;
+        default:
+            alert("You did not enter any of the viable choices. Game cancelled")
+            break;
+}
+return answer;
+}
+function getWinner(playerSelection, computerSelection) {
+let winner;
+
+switch (true) {
+    case playerSelection === computerSelection:
+    winner = "Nobody, Draw";
+    break;
+    case playerSelection === "Rock" && computerSelection === "Scissors":
+    case playerSelection === "Paper" && computerSelection === "Rock":
+    case playerSelection === "Scissors" && computerSelection === "Paper":
+    winner = "Player";
+    break;
+
+    default:
+    winner = "Computer";
+}
+return winner;
+} 
+    
+const computerSelection = getComputerChoice();
+const playerSelection = getPlayerChoice();
+let Winner = (getWinner(computerSelection, playerSelection));
+console.log(Winner);
+   
+   
+   
+   
+   
+   
+   </script>
+</body>
+</html>
+
+
+
+
+
 
