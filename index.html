@@ -19,12 +19,17 @@ function getComputerChoice(){
         default:
         result = "Scissors";
             break;
+    
     }
+    console.log(result)
     return result;
     
 }
 function getPlayerChoice() {
+
     let answer = prompt("Rock Paper or Scissors? Which one do you choose?")
+        answer = answer.charAt(0).toUpperCase() + answer.slice(1).toLowerCase() 
+    
     switch (answer) {
         case ("Rock"):
         answer = "Rock";
@@ -39,34 +44,51 @@ function getPlayerChoice() {
             alert("You did not enter any of the viable choices. Game cancelled")
             break;
 }
+console.log(answer)
 return answer;
 }
-function getWinner(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
 let winner;
-
 switch (true) {
     case playerSelection === computerSelection:
     winner = "Nobody, Draw";
     break;
     case playerSelection === "Rock" && computerSelection === "Scissors":
-    case playerSelection === "Paper" && computerSelection === "Rock":
-    case playerSelection === "Scissors" && computerSelection === "Paper":
-    winner = "Player";
+    winner = "You win! Rock beats Scissors!";
     break;
-
-    default:
-    winner = "Computer";
+    case playerSelection === "Paper" && computerSelection === "Rock":
+    winner = "You win! Paper beats Rock!";
+    break;
+    case playerSelection === "Scissors" && computerSelection === "Paper":
+    winner = "You win Scissors beat Paper!";
+    break;
+    case playerSelection === "Scissors" && computerSelection === "Rock":
+    winner = "You lose! Rock beats Scissors!";
+    break;
+    case playerSelection === "Rock" && computerSelection === "Paper":
+    winner = "You lose! Paper beats Rock!";
+    break;
+    case playerSelection === "Paper" && computerSelection === "Scissors":
+    winner = "You lose! Scissors beat Paper!";
+    break;
 }
+console.log(winner);
 return winner;
 } 
-    
+  function playGame() {
+   getWinner();
+   getWinner();
+   getWinner();
+   getWinner();
+   getWinner();
+  }
+function getWinner() {
 const computerSelection = getComputerChoice();
 const playerSelection = getPlayerChoice();
-let Winner = (getWinner(computerSelection, playerSelection));
-console.log(Winner);
-   
-   
-   
+const winner = playRound(playerSelection, computerSelection);
+}
+playGame();
+
    
    
    
